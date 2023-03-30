@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_SIZE 100
+
+int main() {
+    char str[MAX_SIZE];
+    int i, len;
+    int max_freq = 0, freq;
+    char max_char;
+
+    printf("Enter a string: ");
+    fgets(str, MAX_SIZE, stdin);
+
+    len = strlen(str);
+
+    for (i = 0; i < len; i++) {
+        if (str[i] != '\n') { // Ignore newline character
+            freq = 1; // Frequency of the current character
+            for (int j = i+1; j < len; j++) {
+                if (str[j] == str[i]) { // If the same character is found
+                    freq++; // Increment its frequency
+                }
+            }
+            if (freq > max_freq) { // If current character has highest frequency so far
+                max_freq = freq;
+                max_char = str[i];
+            }
+        }
+    }
+
+    printf("Max repeated character in the string = %c\n", max_char);
+    printf("It occurs %d times", max_freq);
+
+    return 0;
+}
