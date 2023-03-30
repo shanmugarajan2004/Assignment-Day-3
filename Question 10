@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+void reverseString(char *str);
+
+int main() {
+    char str[100];
+
+    printf("Enter any String :: ");
+    scanf("%s", str);
+
+    printf("The Reverse of the String [ %s ] is :: ", str);
+
+    // call reverseString function to reverse the string
+    reverseString(str);
+
+    printf("%s", str);
+
+    return 0;
+}
+
+void reverseString(char *str) {
+    char *start = str;
+    char *end = str;
+
+    // move the end pointer to the end of the string
+    while (*end != '\0') {
+        end++;
+    }
+    end--;
+
+    // swap the characters at start and end positions
+    while (start < end) {
+        char temp = *start;
+        *start = *end;
+        *end = temp;
+
+        start++;
+        end--;
+    }
+}
