@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+void copyArray(int *src, int *dest, int size);
+
+int main() {
+    int array1[10] = {10, -1, 100, 90, 87, 0, 15, 10, 20, 30};
+    int array2[11]; // extra space for copied elements
+
+    printf("Array1: ");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", array1[i]);
+    }
+
+    // call copyArray function to copy elements
+    copyArray(array1, array2, 10);
+
+    printf("\nArray2: ");
+    for (int i = 0; i < 11; i++) {
+        printf("%d ", array2[i]);
+    }
+
+    return 0;
+}
+
+void copyArray(int *src, int *dest, int size) {
+    // loop through the elements and copy them using pointers
+    for (int i = 0; i < size; i++) {
+        *(dest + i) = *(src + i);
+    }
+}
